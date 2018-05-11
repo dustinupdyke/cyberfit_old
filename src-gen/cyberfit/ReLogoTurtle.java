@@ -412,6 +412,203 @@ public class ReLogoTurtle extends BaseTurtle{
 	}
 
 	/**
+	 * Makes a number of new forces and then executes a set of commands on the
+	 * created forces.
+	 * 
+	 * @param number
+	 *            a number
+	 * @param closure
+	 *            a set of commands
+	 * @return created forces
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> hatchForces(int number, Closure closure) {
+		AgentSet<cyberfit.relogo.Force> result = new AgentSet<>();
+		AgentSet<Turtle> createResult = this.hatch(number,closure,"Force");
+		for (Turtle t : createResult){
+			if (t instanceof cyberfit.relogo.Force){
+				result.add((cyberfit.relogo.Force)t);
+			}
+		} 
+		return result;
+	}
+
+	/**
+	 * Makes a number of new forces and then executes a set of commands on the
+	 * created forces.
+	 * 
+	 * @param number
+	 *            a number
+	 * @param closure
+	 *            a set of commands
+	 * @return created forces
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> hatchForces(int number) {
+		return hatchForces(number,null);
+	}
+
+	/**
+	 * Returns an agentset of forces from the patch of the caller.
+	 * 
+	 * @return agentset of forces from the caller's patch
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> forcesHere(){
+	  Grid grid = getMyObserver().getGrid();
+	  GridPoint gridPoint = grid.getLocation(this);
+	  AgentSet<cyberfit.relogo.Force> result = new AgentSet<cyberfit.relogo.Force>();
+	  for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"force")){
+			if (t instanceof cyberfit.relogo.Force)
+			result.add((cyberfit.relogo.Force)t);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns the agentset of forces on the patch at the direction (ndx, ndy) from the
+	 * caller.
+	 * 
+	 * @param nX
+	 *            a number
+	 * @param nY
+	 *            a number
+	 * @returns agentset of forces at the direction (nX, nY) from the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> forcesAt(Number nX, Number nY){
+		double dx = nX.doubleValue();
+		double dy = nY.doubleValue();
+		double[] displacement = {dx,dy};
+
+		try{
+		GridPoint gridPoint = Utility.getGridPointAtDisplacement(getTurtleLocation(),displacement,getMyObserver());
+		AgentSet<cyberfit.relogo.Force> result = new AgentSet<cyberfit.relogo.Force>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"force")){
+			if (t instanceof cyberfit.relogo.Force)
+			result.add((cyberfit.relogo.Force)t);
+		}
+		return result;
+		}
+		catch(SpatialException e){
+			return new AgentSet<cyberfit.relogo.Force>();
+		}
+	}
+
+	/**
+	 * Returns an agentset of forces on a given patch.
+	 * 
+	 * @param p
+	 *            a patch
+	 * @return agentset of forces on patch p
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> forcesOn(Patch p){
+		AgentSet<cyberfit.relogo.Force> result = new AgentSet<cyberfit.relogo.Force>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),getMyObserver(),"force")){
+			if (t instanceof cyberfit.relogo.Force)
+			result.add((cyberfit.relogo.Force)t);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns an agentset of forces on the same patch as a turtle.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return agentset of forces on the same patch as turtle t
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> forcesOn(Turtle t){
+		AgentSet<cyberfit.relogo.Force> result = new AgentSet<cyberfit.relogo.Force>();						
+		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),getMyObserver(),"force")){
+			if (tt instanceof cyberfit.relogo.Force)
+			result.add((cyberfit.relogo.Force)tt);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns an agentset of forces on the patches in a collection or on the patches
+	 * that a collection of turtles are.
+	 * 
+	 * @param a
+	 *            a collection
+	 * @return agentset of forces on the patches in collection a or on the patches
+	 *         that collection a turtles are
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> forcesOn(Collection c){
+
+		if (c == null || c.isEmpty()){
+			return new AgentSet<cyberfit.relogo.Force>();
+		}
+
+		Set<cyberfit.relogo.Force> total = new HashSet<cyberfit.relogo.Force>();
+		if (c.iterator().next() instanceof Turtle){
+			for (Object o : c){
+				if (o instanceof Turtle){
+					Turtle t = (Turtle) o;
+					total.addAll(forcesOn(t));
+				}
+			}
+		}
+		else {
+			for (Object o : c){
+				if (o instanceof Patch){
+					Patch p = (Patch) o;
+					total.addAll(forcesOn(p));
+				}
+			}
+		}
+		return new AgentSet<cyberfit.relogo.Force>(total);
+	}
+
+	/**
+	 * Queries if object is a force.
+	 * 
+	 * @param o
+	 *            an object
+	 * @return true or false based on whether the object is a force
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public boolean isForceQ(Object o){
+		return (o instanceof cyberfit.relogo.Force);
+	}
+
+	/**
+	 * Returns an agentset containing all forces.
+	 * 
+	 * @return agentset of all forces
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public AgentSet<cyberfit.relogo.Force> forces(){
+		AgentSet<cyberfit.relogo.Force> a = new AgentSet<cyberfit.relogo.Force>();
+		for (Object e : this.getMyObserver().getContext().getObjects(cyberfit.relogo.Force.class)) {
+			if (e instanceof cyberfit.relogo.Force){
+				a.add((cyberfit.relogo.Force)e);
+			}
+		}
+		return a;
+	}
+
+	/**
+	 * Returns the force with the given who number.
+	 * 
+	 * @param number
+	 *            a number
+	 * @return turtle number
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
+	public cyberfit.relogo.Force force(Number number){
+		Turtle turtle = Utility.turtleU(number.intValue(), getMyObserver());
+		if (turtle instanceof cyberfit.relogo.Force)
+			return (cyberfit.relogo.Force) turtle;
+		return null;
+	}
+
+	/**
 	 * Makes a number of new machines and then executes a set of commands on the
 	 * created machines.
 	 * 
@@ -1138,6 +1335,341 @@ public class ReLogoTurtle extends BaseTurtle{
 	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
 	public cyberfit.relogo.Connection connection(Turtle oneEnd, Turtle otherEnd) {
 		return connection(oneEnd.getWho(), otherEnd.getWho());
+	}
+
+	/**
+	 * Makes a directed interaction from a turtle to the caller then executes a set of
+	 * commands on the created interaction.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @param closure
+	 *            a set of commands
+	 * @return created interaction
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction createInteractionFrom(Turtle t, Closure closure){
+		cyberfit.relogo.Interaction link = (cyberfit.relogo.Interaction)this.getMyObserver().getNetwork("Interaction").addEdge(t,this);
+		if (closure != null){
+			this.ask(link,closure);
+		}
+		return link;
+	}
+
+	/**
+	 * Makes a directed interaction from a turtle to the caller.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return created interaction
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction createInteractionFrom(Turtle t){
+			return createInteractionFrom(t,null);
+	}
+
+	/**
+	 * Makes directed interactions from a collection to the caller then executes a set
+	 * of commands on the created interactions.
+	 * 
+	 * @param a
+	 *            a collection
+	 * @param closure
+	 *            a set of commands
+	 * @return created interactions
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> createInteractionsFrom(Collection<? extends Turtle> a, Closure closure){
+		AgentSet<cyberfit.relogo.Interaction> links = new AgentSet<cyberfit.relogo.Interaction>();
+		for(Turtle t : a){
+			links.add((cyberfit.relogo.Interaction)this.getMyObserver().getNetwork("Interaction").addEdge(t,this));
+		}
+		if (closure != null){
+			this.ask(links,closure);
+		}
+		return links;
+	}
+
+	/**
+	 * Makes directed interactions from a collection to the caller.
+	 * 
+	 * @param a
+	 *            a collection
+	 * @return created interactions
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> createInteractionsFrom(Collection<? extends Turtle> a){
+		return createInteractionsFrom(a,null);
+	}
+
+	/**
+	 * Makes a directed interaction to a turtle from the caller then executes a set of
+	 * commands on the created interaction.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @param closure
+	 *            a set of commands
+	 * @return created interaction
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction createInteractionTo(Turtle t, Closure closure){
+		cyberfit.relogo.Interaction link = (cyberfit.relogo.Interaction)this.getMyObserver().getNetwork("Interaction").addEdge(this,t);
+		if (closure != null){
+			this.ask(link,closure);
+		}
+		return link;
+	}
+
+	/**
+	 * Makes a directed interaction to a turtle from the caller.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return created interaction
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction createInteractionTo(Turtle t){
+			return createInteractionTo(t,null);
+	}
+
+	/**
+	 * Makes directed interactions to a collection from the caller then executes a set
+	 * of commands on the created interactions.
+	 * 
+	 * @param a
+	 *            a collection
+	 * @param closure
+	 *            a set of commands
+	 * @return created interactions
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> createInteractionsTo(Collection<? extends Turtle> a, Closure closure){
+		AgentSet<cyberfit.relogo.Interaction> links = new AgentSet<cyberfit.relogo.Interaction>();
+		for(Object t : a){
+			if (t instanceof Turtle){
+				links.add((cyberfit.relogo.Interaction)this.getMyObserver().getNetwork("Interaction").addEdge(this,(Turtle)t));
+			}
+		}
+		if (closure != null){
+			this.ask(links,closure);
+		}
+		return links;
+	}
+
+	/**
+	 * Makes directed interactions to a collection from the caller.
+	 * 
+	 * @param a
+	 *            a collection
+	 * @return created interactions
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> createInteractionsTo(Collection<? extends Turtle> a){
+		return createInteractionsTo(a,null);
+	}
+
+	/**
+	 * Queries if there is a directed interaction from a turtle to the caller.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return true or false based on whether there is a directed interaction from
+	 *         turtle t to the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public boolean inInteractionNeighborQ(Turtle t){
+		return this.getMyObserver().getNetwork("Interaction").isPredecessor(t, this);
+	}
+
+	/**
+	 * Returns the agentset with directed interactions to the caller.
+	 * 
+	 * @return agentset with directed interactions to the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet inInteractionNeighbors(){
+		AgentSet result = new AgentSet();
+		for(Object o : this.getMyObserver().getNetwork("Interaction").getPredecessors(this)){
+			result.add(o);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns the directed interaction from a turtle to the caller.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return directed interaction from turtle t to the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction inInteractionFrom(Turtle t){
+		return (cyberfit.relogo.Interaction)this.getMyObserver().getNetwork("Interaction").getEdge(t,this);
+	}
+
+	/**
+	 * Returns an agentset of directed interactions from other turtles to the caller.
+	 * 
+	 * @return agentset of directed interactions from other turtles to the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> myInInteractions(){
+		AgentSet<cyberfit.relogo.Interaction> result = new AgentSet<cyberfit.relogo.Interaction>();
+		for(Object o :  this.getMyObserver().getNetwork("Interaction").getInEdges(this)){
+			if (o instanceof cyberfit.relogo.Interaction){
+				result.add((cyberfit.relogo.Interaction) o);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Returns an agentset of directed interactions to other turtles from the caller.
+	 * 
+	 * @return agentset of directed interactions to other turtles from the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> myOutInteractions(){
+		AgentSet<cyberfit.relogo.Interaction> result = new AgentSet<cyberfit.relogo.Interaction>();
+		for(Object o :  this.getMyObserver().getNetwork("Interaction").getOutEdges(this)){
+			if (o instanceof cyberfit.relogo.Interaction){
+				result.add((cyberfit.relogo.Interaction) o);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Queries if there is a directed interaction to a turtle from the caller.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return true or false based on whether there is a directed interaction to
+	 *         turtle t from the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public boolean outInteractionNeighborQ(Turtle t){
+		return this.getMyObserver().getNetwork("Interaction").isPredecessor(this, t);
+	}
+
+	/**
+	 * Returns the agentset with directed interactions from the caller.
+	 * 
+	 * @return agentset with directed interactions from the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet outInteractionNeighbors(){
+		AgentSet result = new AgentSet();
+		for(Object o : this.getMyObserver().getNetwork("Interaction").getSuccessors(this)){
+			result.add(o);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns the directed interaction to a turtle from the caller.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return directed interaction to turtle t from the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction outInteractionTo(Turtle t){
+		return (cyberfit.relogo.Interaction)this.getMyObserver().getNetwork("Interaction").getEdge(this, t);
+	}
+
+	/**
+	 * Reports true if there is a interaction connecting t and the caller.
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public boolean interactionNeighborQ(Turtle t){
+		return this.getMyObserver().getNetwork("Interaction").isAdjacent(this, t);
+	}
+
+	/**
+	 * Returns the agentset of all turtles found at the other end of
+	 * interactions connected to the calling turtle.
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet interactionNeighbors(){
+		AgentSet result = new AgentSet();
+		for(Object o : this.getMyObserver().getNetwork("Interaction").getAdjacent(this)){
+			result.add(o);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns an agentset of the caller's interactions.
+	 * 
+	 * @return agentset of the caller's interactions
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> myInteractions(){
+		AgentSet<cyberfit.relogo.Interaction> result = new AgentSet<cyberfit.relogo.Interaction>();
+		for(Object o : this.getMyObserver().getNetwork("Interaction").getEdges(this)){
+			if (o instanceof cyberfit.relogo.Interaction){
+				result.add((cyberfit.relogo.Interaction)o);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Queries if object is a interaction.
+	 * 
+	 * @param o
+	 *            an object
+	 * @return true or false based on whether the object is a interaction
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public boolean isInteractionQ(Object o){
+		return (o instanceof cyberfit.relogo.Interaction);
+	}
+
+	/**
+	 * Returns an agentset containing all interactions.
+	 * 
+	 * @return agentset of all interactions
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public AgentSet<cyberfit.relogo.Interaction> interactions(){
+		AgentSet<cyberfit.relogo.Interaction> a = new AgentSet<cyberfit.relogo.Interaction>();
+		for (Object e : this.getMyObserver().getContext().getObjects(cyberfit.relogo.Interaction.class)) {
+			if (e instanceof cyberfit.relogo.Interaction){
+				a.add((cyberfit.relogo.Interaction)e);
+			}
+		}
+		return a;
+	}
+
+	/**
+	 * Returns the interaction between two turtles.
+	 * 
+	 * @param oneEnd
+	 *            an integer
+	 * @param otherEnd
+	 *            an integer
+	 * @return interaction between two turtles
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction interaction(Number oneEnd, Number otherEnd) {
+		return (cyberfit.relogo.Interaction)(this.getMyObserver().getNetwork("Interaction").getEdge(turtle(oneEnd),turtle(otherEnd)));
+	}
+
+	/**
+	 * Returns the interaction between two turtles.
+	 * 
+	 * @param oneEnd
+	 *            a turtle
+	 * @param otherEnd
+	 *            a turtle
+	 * @return interaction between two turtles
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Interaction")
+	public cyberfit.relogo.Interaction interaction(Turtle oneEnd, Turtle otherEnd) {
+		return interaction(oneEnd.getWho(), otherEnd.getWho());
 	}
 
 	/**

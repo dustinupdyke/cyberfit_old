@@ -10,7 +10,10 @@ import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
 import repast.simphony.relogo.schedule.Go;
 import repast.simphony.relogo.schedule.Setup;
-import cyberfit.ReLogoLink;
+import static repast.simphony.relogo.Utility.*
+import static repast.simphony.relogo.UtilityG.*
+
+import cyberfit.ReLogoLink
 
 class UserLink extends ReLogoLink	{
 

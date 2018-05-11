@@ -50,6 +50,10 @@
       <string>Connection</string>
       <string>cyberfit.style.LinkStyle</string>
     </entry>
+    <entry>
+      <string>Interaction</string>
+      <string>cyberfit.style.LinkStyle</string>
+    </entry>
   </netStyles>
   <editedNetStyles>
     <entry>
@@ -70,6 +74,10 @@
     </entry>
     <entry>
       <string>Connection</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>Interaction</string>
       <null/>
     </entry>
   </editedNetStyles>
@@ -126,6 +134,11 @@
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>Connection</id>
+      <attributes/>
+      <type>NETWORK</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>Interaction</id>
       <attributes/>
       <type>NETWORK</type>
     </repast.simphony.scenario.data.ProjectionData>
@@ -192,6 +205,13 @@
       <string>Connection</string>
       <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
         <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[6]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>Interaction</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[7]"/>
         <props/>
       </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
