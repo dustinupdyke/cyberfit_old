@@ -12,6 +12,6 @@ import repast.simphony.relogo.ast.Diffusible
 import repast.simphony.relogo.schedule.Go
 import repast.simphony.relogo.schedule.Setup
 
-class Connection extends ReLogoLink {
+class Connection extends ReLogoLink {//
 	
 }
