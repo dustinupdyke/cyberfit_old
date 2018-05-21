@@ -1081,3 +1081,28 @@ Caused by: groovy.lang.MissingPropertyException: No such property: uniform for c
 	at org.codehaus.groovy.vmplugin.v7.IndyInterface.selectMethod(IndyInterface.java:232)
 	at cyberfit.relogo.UserObserver.setup(UserObserver.groovy:26)
 	... 10 more
+FATAL [Thread-6] 2018-05-18 21:51:26,956 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+repast.simphony.data2.DataException: Error invoking method on object
+	at repast.simphony.data2.MethodDataSource.get(MethodDataSource.java:99)
+	at repast.simphony.data2.NonAggregateDataSet.record(NonAggregateDataSet.java:78)
+	at repast.simphony.data2.AbstractDataSetManager$ScheduledDataSet.execute(AbstractDataSetManager.java:119)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.reflect.InvocationTargetException
+	at cyberfit.relogo.Machine$$FastClassByCGLIB$$23a5882d.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.data2.MethodDataSource.get(MethodDataSource.java:97)
+	... 8 more
+Caused by: groovy.lang.MissingPropertyException: Exception evaluating property 'each' for java.util.ArrayList, Reason: groovy.lang.MissingPropertyException: No such property: each for class: cyberfit.relogo.Vuln
+Possible solutions: name
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.getAtIterable(DefaultGroovyMethods.java:7775)
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.getAt(DefaultGroovyMethods.java:7763)
+	at groovy.lang.MetaClassImpl$8.getProperty(MetaClassImpl.java:1989)
+	at org.codehaus.groovy.vmplugin.v7.IndyInterface.selectMethod(IndyInterface.java:232)
+	at cyberfit.relogo.Machine.getVulns(Machine.groovy:51)
+	... 11 more

@@ -14,6 +14,7 @@ import repast.simphony.relogo.schedule.Setup
 class Force extends UserTurtle {
 
 	def type = "oco" //or dco
+	def subType = "" //nationState|hacktivist|other
 	def specialty = ""
 	def experienceYrs = 0
 	def rank = "e9" //e1 to e9
@@ -32,22 +33,4 @@ class Force extends UserTurtle {
 	def step() {
 		
 	}
-}
-
-class Attack {
-	def id = -1
-	def name = ""
-	def machineTypes = [] //applicable machines susceptible to this attack 
-}
-
-class Mission {
-	def id = -1
-	def name = ""
-	def description = ""
-	//missions: 
-	//chow (feed force)
-	//log (logistics)
-	//pilots (fly planes)
-	//CPT (enable everyone else's mission
-	//etc.
 }
