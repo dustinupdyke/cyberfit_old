@@ -12,7 +12,7 @@ import repast.simphony.relogo.ast.Diffusible
 import repast.simphony.relogo.schedule.Go
 import repast.simphony.relogo.schedule.Setup
 
-class Machine extends UserTurtle {
+class Terrain extends UserTurtle {
 
 	def status = 0
 	def type = "server" //router|server|user

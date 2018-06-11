@@ -610,145 +610,145 @@ public class ReLogoPatch extends BasePatch{
 	}
 
 	/**
-	 * Sprouts (makes) a number of new machines and then executes a set of commands on the
-	 * created machines.
+	 * Sprouts (makes) a number of new friendlys and then executes a set of commands on the
+	 * created friendlys.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created machines
+	 * @return created friendlys
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> sproutMachines(int number, Closure closure) {
-		AgentSet<cyberfit.relogo.Machine> result = new AgentSet<>();
-		AgentSet<Turtle> createResult = this.sprout(number,closure,"Machine");
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> sproutFriendlys(int number, Closure closure) {
+		AgentSet<cyberfit.relogo.Friendly> result = new AgentSet<>();
+		AgentSet<Turtle> createResult = this.sprout(number,closure,"Friendly");
 		for (Turtle t : createResult){
-			if (t instanceof cyberfit.relogo.Machine){
-				result.add((cyberfit.relogo.Machine)t);
+			if (t instanceof cyberfit.relogo.Friendly){
+				result.add((cyberfit.relogo.Friendly)t);
 			}
 		} 
 		return result;
 	}
 
 	/**
-	 * Sprouts (makes) a number of new machines and then executes a set of commands on the
-	 * created machines.
+	 * Sprouts (makes) a number of new friendlys and then executes a set of commands on the
+	 * created friendlys.
 	 * 
 	 * @param number
 	 *            a number
 	 * @param closure
 	 *            a set of commands
-	 * @return created machines
+	 * @return created friendlys
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> sproutMachines(int number) {
-		return sproutMachines(number,null);
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> sproutFriendlys(int number) {
+		return sproutFriendlys(number,null);
 	}
 
 	/**
-	 * Returns an agentset of machines from the patch of the caller.
+	 * Returns an agentset of friendlys from the patch of the caller.
 	 * 
-	 * @return agentset of machines from the caller's patch
+	 * @return agentset of friendlys from the caller's patch
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> machinesHere(){
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> friendlysHere(){
 	  Grid grid = getMyObserver().getGrid();
 	  GridPoint gridPoint = grid.getLocation(this);
-	  AgentSet<cyberfit.relogo.Machine> result = new AgentSet<cyberfit.relogo.Machine>();
-	  for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"machine")){
-			if (t instanceof cyberfit.relogo.Machine)
-			result.add((cyberfit.relogo.Machine)t);
+	  AgentSet<cyberfit.relogo.Friendly> result = new AgentSet<cyberfit.relogo.Friendly>();
+	  for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"friendly")){
+			if (t instanceof cyberfit.relogo.Friendly)
+			result.add((cyberfit.relogo.Friendly)t);
 		}
 		return result;
 	}
 
 	/**
-	 * Returns the agentset of machines on the patch at the direction (ndx, ndy) from the
+	 * Returns the agentset of friendlys on the patch at the direction (ndx, ndy) from the
 	 * caller.
 	 * 
 	 * @param nX
 	 *            a number
 	 * @param nY
 	 *            a number
-	 * @returns agentset of machines at the direction (nX, nY) from the caller
+	 * @returns agentset of friendlys at the direction (nX, nY) from the caller
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> machinesAt(Number nX, Number nY){
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> friendlysAt(Number nX, Number nY){
 		double dx = nX.doubleValue();
 		double dy = nY.doubleValue();
 		double[] displacement = {dx,dy};
 
 		try{
 		GridPoint gridPoint = Utility.getGridPointAtDisplacement(getGridLocationAsNdPoint(),displacement,getMyObserver());
-		AgentSet<cyberfit.relogo.Machine> result = new AgentSet<cyberfit.relogo.Machine>();						
-		for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"machine")){
-			if (t instanceof cyberfit.relogo.Machine)
-			result.add((cyberfit.relogo.Machine)t);
+		AgentSet<cyberfit.relogo.Friendly> result = new AgentSet<cyberfit.relogo.Friendly>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"friendly")){
+			if (t instanceof cyberfit.relogo.Friendly)
+			result.add((cyberfit.relogo.Friendly)t);
 		}
 		return result;
 		}
 		catch(SpatialException e){
-			return new AgentSet<cyberfit.relogo.Machine>();
+			return new AgentSet<cyberfit.relogo.Friendly>();
 		}
 	}
 
 	/**
-	 * Returns an agentset of machines on a given patch.
+	 * Returns an agentset of friendlys on a given patch.
 	 * 
 	 * @param p
 	 *            a patch
-	 * @return agentset of machines on patch p
+	 * @return agentset of friendlys on patch p
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> machinesOn(Patch p){
-		AgentSet<cyberfit.relogo.Machine> result = new AgentSet<cyberfit.relogo.Machine>();						
-		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),getMyObserver(),"machine")){
-			if (t instanceof cyberfit.relogo.Machine)
-			result.add((cyberfit.relogo.Machine)t);
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> friendlysOn(Patch p){
+		AgentSet<cyberfit.relogo.Friendly> result = new AgentSet<cyberfit.relogo.Friendly>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),getMyObserver(),"friendly")){
+			if (t instanceof cyberfit.relogo.Friendly)
+			result.add((cyberfit.relogo.Friendly)t);
 		}
 		return result;
 	}
 
 	/**
-	 * Returns an agentset of machines on the same patch as a turtle.
+	 * Returns an agentset of friendlys on the same patch as a turtle.
 	 * 
 	 * @param t
 	 *            a turtle
-	 * @return agentset of machines on the same patch as turtle t
+	 * @return agentset of friendlys on the same patch as turtle t
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> machinesOn(Turtle t){
-		AgentSet<cyberfit.relogo.Machine> result = new AgentSet<cyberfit.relogo.Machine>();						
-		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),getMyObserver(),"machine")){
-			if (tt instanceof cyberfit.relogo.Machine)
-			result.add((cyberfit.relogo.Machine)tt);
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> friendlysOn(Turtle t){
+		AgentSet<cyberfit.relogo.Friendly> result = new AgentSet<cyberfit.relogo.Friendly>();						
+		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),getMyObserver(),"friendly")){
+			if (tt instanceof cyberfit.relogo.Friendly)
+			result.add((cyberfit.relogo.Friendly)tt);
 		}
 		return result;
 	}
 
 	/**
-	 * Returns an agentset of machines on the patches in a collection or on the patches
+	 * Returns an agentset of friendlys on the patches in a collection or on the patches
 	 * that a collection of turtles are.
 	 * 
 	 * @param a
 	 *            a collection
-	 * @return agentset of machines on the patches in collection a or on the patches
+	 * @return agentset of friendlys on the patches in collection a or on the patches
 	 *         that collection a turtles are
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> machinesOn(Collection c){
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> friendlysOn(Collection c){
 
 		if (c == null || c.isEmpty()){
-			return new AgentSet<cyberfit.relogo.Machine>();
+			return new AgentSet<cyberfit.relogo.Friendly>();
 		}
 
-		Set<cyberfit.relogo.Machine> total = new HashSet<cyberfit.relogo.Machine>();
+		Set<cyberfit.relogo.Friendly> total = new HashSet<cyberfit.relogo.Friendly>();
 		if (c.iterator().next() instanceof Turtle){
 			for (Object o : c){
 				if (o instanceof Turtle){
 					Turtle t = (Turtle) o;
-					total.addAll(machinesOn(t));
+					total.addAll(friendlysOn(t));
 				}
 			}
 		}
@@ -756,53 +756,250 @@ public class ReLogoPatch extends BasePatch{
 			for (Object o : c){
 				if (o instanceof Patch){
 					Patch p = (Patch) o;
-					total.addAll(machinesOn(p));
+					total.addAll(friendlysOn(p));
 				}
 			}
 		}
-		return new AgentSet<cyberfit.relogo.Machine>(total);
+		return new AgentSet<cyberfit.relogo.Friendly>(total);
 	}
 
 	/**
-	 * Queries if object is a machine.
+	 * Queries if object is a friendly.
 	 * 
 	 * @param o
 	 *            an object
-	 * @return true or false based on whether the object is a machine
+	 * @return true or false based on whether the object is a friendly
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public boolean isMachineQ(Object o){
-		return (o instanceof cyberfit.relogo.Machine);
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public boolean isFriendlyQ(Object o){
+		return (o instanceof cyberfit.relogo.Friendly);
 	}
 
 	/**
-	 * Returns an agentset containing all machines.
+	 * Returns an agentset containing all friendlys.
 	 * 
-	 * @return agentset of all machines
+	 * @return agentset of all friendlys
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public AgentSet<cyberfit.relogo.Machine> machines(){
-		AgentSet<cyberfit.relogo.Machine> a = new AgentSet<cyberfit.relogo.Machine>();
-		for (Object e : this.getMyObserver().getContext().getObjects(cyberfit.relogo.Machine.class)) {
-			if (e instanceof cyberfit.relogo.Machine){
-				a.add((cyberfit.relogo.Machine)e);
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public AgentSet<cyberfit.relogo.Friendly> friendlys(){
+		AgentSet<cyberfit.relogo.Friendly> a = new AgentSet<cyberfit.relogo.Friendly>();
+		for (Object e : this.getMyObserver().getContext().getObjects(cyberfit.relogo.Friendly.class)) {
+			if (e instanceof cyberfit.relogo.Friendly){
+				a.add((cyberfit.relogo.Friendly)e);
 			}
 		}
 		return a;
 	}
 
 	/**
-	 * Returns the machine with the given who number.
+	 * Returns the friendly with the given who number.
 	 * 
 	 * @param number
 	 *            a number
 	 * @return turtle number
 	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Machine")
-	public cyberfit.relogo.Machine machine(Number number){
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Friendly")
+	public cyberfit.relogo.Friendly friendly(Number number){
 		Turtle turtle = Utility.turtleU(number.intValue(), getMyObserver());
-		if (turtle instanceof cyberfit.relogo.Machine)
-			return (cyberfit.relogo.Machine) turtle;
+		if (turtle instanceof cyberfit.relogo.Friendly)
+			return (cyberfit.relogo.Friendly) turtle;
+		return null;
+	}
+
+	/**
+	 * Sprouts (makes) a number of new terrains and then executes a set of commands on the
+	 * created terrains.
+	 * 
+	 * @param number
+	 *            a number
+	 * @param closure
+	 *            a set of commands
+	 * @return created terrains
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> sproutTerrains(int number, Closure closure) {
+		AgentSet<cyberfit.relogo.Terrain> result = new AgentSet<>();
+		AgentSet<Turtle> createResult = this.sprout(number,closure,"Terrain");
+		for (Turtle t : createResult){
+			if (t instanceof cyberfit.relogo.Terrain){
+				result.add((cyberfit.relogo.Terrain)t);
+			}
+		} 
+		return result;
+	}
+
+	/**
+	 * Sprouts (makes) a number of new terrains and then executes a set of commands on the
+	 * created terrains.
+	 * 
+	 * @param number
+	 *            a number
+	 * @param closure
+	 *            a set of commands
+	 * @return created terrains
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> sproutTerrains(int number) {
+		return sproutTerrains(number,null);
+	}
+
+	/**
+	 * Returns an agentset of terrains from the patch of the caller.
+	 * 
+	 * @return agentset of terrains from the caller's patch
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> terrainsHere(){
+	  Grid grid = getMyObserver().getGrid();
+	  GridPoint gridPoint = grid.getLocation(this);
+	  AgentSet<cyberfit.relogo.Terrain> result = new AgentSet<cyberfit.relogo.Terrain>();
+	  for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"terrain")){
+			if (t instanceof cyberfit.relogo.Terrain)
+			result.add((cyberfit.relogo.Terrain)t);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns the agentset of terrains on the patch at the direction (ndx, ndy) from the
+	 * caller.
+	 * 
+	 * @param nX
+	 *            a number
+	 * @param nY
+	 *            a number
+	 * @returns agentset of terrains at the direction (nX, nY) from the caller
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> terrainsAt(Number nX, Number nY){
+		double dx = nX.doubleValue();
+		double dy = nY.doubleValue();
+		double[] displacement = {dx,dy};
+
+		try{
+		GridPoint gridPoint = Utility.getGridPointAtDisplacement(getGridLocationAsNdPoint(),displacement,getMyObserver());
+		AgentSet<cyberfit.relogo.Terrain> result = new AgentSet<cyberfit.relogo.Terrain>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(gridPoint,getMyObserver(),"terrain")){
+			if (t instanceof cyberfit.relogo.Terrain)
+			result.add((cyberfit.relogo.Terrain)t);
+		}
+		return result;
+		}
+		catch(SpatialException e){
+			return new AgentSet<cyberfit.relogo.Terrain>();
+		}
+	}
+
+	/**
+	 * Returns an agentset of terrains on a given patch.
+	 * 
+	 * @param p
+	 *            a patch
+	 * @return agentset of terrains on patch p
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> terrainsOn(Patch p){
+		AgentSet<cyberfit.relogo.Terrain> result = new AgentSet<cyberfit.relogo.Terrain>();						
+		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),getMyObserver(),"terrain")){
+			if (t instanceof cyberfit.relogo.Terrain)
+			result.add((cyberfit.relogo.Terrain)t);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns an agentset of terrains on the same patch as a turtle.
+	 * 
+	 * @param t
+	 *            a turtle
+	 * @return agentset of terrains on the same patch as turtle t
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> terrainsOn(Turtle t){
+		AgentSet<cyberfit.relogo.Terrain> result = new AgentSet<cyberfit.relogo.Terrain>();						
+		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),getMyObserver(),"terrain")){
+			if (tt instanceof cyberfit.relogo.Terrain)
+			result.add((cyberfit.relogo.Terrain)tt);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns an agentset of terrains on the patches in a collection or on the patches
+	 * that a collection of turtles are.
+	 * 
+	 * @param a
+	 *            a collection
+	 * @return agentset of terrains on the patches in collection a or on the patches
+	 *         that collection a turtles are
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> terrainsOn(Collection c){
+
+		if (c == null || c.isEmpty()){
+			return new AgentSet<cyberfit.relogo.Terrain>();
+		}
+
+		Set<cyberfit.relogo.Terrain> total = new HashSet<cyberfit.relogo.Terrain>();
+		if (c.iterator().next() instanceof Turtle){
+			for (Object o : c){
+				if (o instanceof Turtle){
+					Turtle t = (Turtle) o;
+					total.addAll(terrainsOn(t));
+				}
+			}
+		}
+		else {
+			for (Object o : c){
+				if (o instanceof Patch){
+					Patch p = (Patch) o;
+					total.addAll(terrainsOn(p));
+				}
+			}
+		}
+		return new AgentSet<cyberfit.relogo.Terrain>(total);
+	}
+
+	/**
+	 * Queries if object is a terrain.
+	 * 
+	 * @param o
+	 *            an object
+	 * @return true or false based on whether the object is a terrain
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public boolean isTerrainQ(Object o){
+		return (o instanceof cyberfit.relogo.Terrain);
+	}
+
+	/**
+	 * Returns an agentset containing all terrains.
+	 * 
+	 * @return agentset of all terrains
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public AgentSet<cyberfit.relogo.Terrain> terrains(){
+		AgentSet<cyberfit.relogo.Terrain> a = new AgentSet<cyberfit.relogo.Terrain>();
+		for (Object e : this.getMyObserver().getContext().getObjects(cyberfit.relogo.Terrain.class)) {
+			if (e instanceof cyberfit.relogo.Terrain){
+				a.add((cyberfit.relogo.Terrain)e);
+			}
+		}
+		return a;
+	}
+
+	/**
+	 * Returns the terrain with the given who number.
+	 * 
+	 * @param number
+	 *            a number
+	 * @return turtle number
+	 */
+	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Terrain")
+	public cyberfit.relogo.Terrain terrain(Number number){
+		Turtle turtle = Utility.turtleU(number.intValue(), getMyObserver());
+		if (turtle instanceof cyberfit.relogo.Terrain)
+			return (cyberfit.relogo.Terrain) turtle;
 		return null;
 	}
 
@@ -1001,62 +1198,6 @@ public class ReLogoPatch extends BasePatch{
 		if (turtle instanceof cyberfit.relogo.UserTurtle)
 			return (cyberfit.relogo.UserTurtle) turtle;
 		return null;
-	}
-
-	/**
-	 * Queries if object is a connection.
-	 * 
-	 * @param o
-	 *            an object
-	 * @return true or false based on whether the object is a connection
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public boolean isConnectionQ(Object o){
-		return (o instanceof cyberfit.relogo.Connection);
-	}
-
-	/**
-	 * Returns an agentset containing all connections.
-	 * 
-	 * @return agentset of all connections
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public AgentSet<cyberfit.relogo.Connection> connections(){
-		AgentSet<cyberfit.relogo.Connection> a = new AgentSet<cyberfit.relogo.Connection>();
-		for (Object e : this.getMyObserver().getContext().getObjects(cyberfit.relogo.Connection.class)) {
-			if (e instanceof cyberfit.relogo.Connection){
-				a.add((cyberfit.relogo.Connection)e);
-			}
-		}
-		return a;
-	}
-
-	/**
-	 * Returns the connection between two turtles.
-	 * 
-	 * @param oneEnd
-	 *            an integer
-	 * @param otherEnd
-	 *            an integer
-	 * @return connection between two turtles
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public cyberfit.relogo.Connection connection(Number oneEnd, Number otherEnd) {
-		return (cyberfit.relogo.Connection)(this.getMyObserver().getNetwork("Connection").getEdge(turtle(oneEnd),turtle(otherEnd)));
-	}
-
-	/**
-	 * Returns the connection between two turtles.
-	 * 
-	 * @param oneEnd
-	 *            a turtle
-	 * @param otherEnd
-	 *            a turtle
-	 * @return connection between two turtles
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public cyberfit.relogo.Connection connection(Turtle oneEnd, Turtle otherEnd) {
-		return connection(oneEnd.getWho(), otherEnd.getWho());
 	}
 
 	/**

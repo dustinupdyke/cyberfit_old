@@ -17,12 +17,12 @@ class Force extends UserTurtle {
 	def subType = "" //nationState|hacktivist|other
 	def specialty = ""
 	def experienceYrs = 0
-	def rank = "e9" //e1 to e9
+	def rank = "e1" //e1 to e9
 	def csa = [0,0] //cyber Situational Awareness 2d graph array   terrainid|confidentiality|integrity|availability 
 	def missionId = 0
 	def skill = 0
 	def phase = 0 //1-7 
-	def attacks = [] //array of Attack
+	def attacks = [] //array of Attacks
 	
 	def setup(){
 		// this.attacks.add(new Attack {id=1,name="Phishing")

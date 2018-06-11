@@ -11,10 +11,16 @@ import repast.simphony.relogo.UtilityG
 import repast.simphony.relogo.schedule.Go
 import repast.simphony.relogo.schedule.Setup
 
-class Attacker extends Force {
+class Attacker extends UserTurtle {
 
-	def setup() {
-		type = "oco"
+	def tier = 1 // 1 - 6 based on DSB
+	def phase = 0 //1-7
+	def attacks = [] //array of Attacks
+	
+	def setup(){
+		// this.attacks.add(new Attack {id=1,name="Phishing")
+		//Random.CreateUniform();
+		skill = new Random().nextInt(100) + 1
 	}
 
 	def step() {
