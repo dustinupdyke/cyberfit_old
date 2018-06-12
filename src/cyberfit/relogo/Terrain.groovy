@@ -15,25 +15,21 @@ import repast.simphony.relogo.schedule.Setup
 class Terrain extends UserTurtle {
 
 	def status = 0
-	def type = "server" //router|server|user
+	def type = 1 //1 - routing, 2 - server, 3 - user
 	def isCompromised = false
 	def vulns = [] //array of vulnerability ids
 	def missionsSupported = []
-	
 	def confidentiality = -1
 	def integrity = 	-1
 	def availability = -1
-
-	def update(int s){
-		this.status = s
-
-		if(this.status != 0) {
-			this.setColor(orange())
-		} else {
-			this.setColor(brown())
-		}
-	}
 	
+	def setup() {
+	
+		System.out.println("Happiness Changed");
+		loadBaseTerrain()
+	
+	}
+
 	def step() {
 		//is there a new vuln this machine should expose?
 		def r = new Random()
@@ -45,11 +41,42 @@ class Terrain extends UserTurtle {
 		}
 	}
 	
+	def update(int s){
+		this.status = s
+
+		if(this.status != 0) {
+			this.setColor(orange())
+		} else {
+			this.setColor(brown())
+		}
+	}
+	
 	def getVulns() {
 		def o = []
 		for(item in this.vulns) {
 			o.add(item.name)
 		}
 		return o
+	}
+	
+	def loadBaseTerrain() { 
+		def i = 0
+		
+		//Load the basic cyber terrain that provides minimal connectivity in an austere location
+		
+		//load type 1: 10 routing systems
+		while(i < 10) {
+			Terrain t1 = new Terrain()
+			t1.setColor(green())
+			t1.availability = 1
+			t1.confidentiality = 1
+			t1.integrity = 1
+			t1.isCompromised = false
+			i++
+		}
+		
+		//load type 2: 20 server systems
+		
+		//load type 3: 40 user systems
 	}
 }

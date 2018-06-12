@@ -241,119 +241,6 @@ public class ReLogoLink<T> extends BaseLink<T>	{
 	}
 
 	/**
-	 * Returns an agentset of forces on a given patch.
-	 * 
-	 * @param p
-	 *            a patch
-	 * @return agentset of forces on patch p
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
-	public AgentSet<cyberfit.relogo.Force> forcesOn(Patch p){
-		AgentSet<cyberfit.relogo.Force> result = new AgentSet<cyberfit.relogo.Force>();						
-		for (Turtle t : Utility.getTurtlesOnGridPoint(p.getGridLocation(),getMyObserver(),"force")){
-			if (t instanceof cyberfit.relogo.Force)
-			result.add((cyberfit.relogo.Force)t);
-		}
-		return result;
-	}
-
-	/**
-	 * Returns an agentset of forces on the same patch as a turtle.
-	 * 
-	 * @param t
-	 *            a turtle
-	 * @return agentset of forces on the same patch as turtle t
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
-	public AgentSet<cyberfit.relogo.Force> forcesOn(Turtle t){
-		AgentSet<cyberfit.relogo.Force> result = new AgentSet<cyberfit.relogo.Force>();						
-		for (Turtle tt : Utility.getTurtlesOnGridPoint(Utility.ndPointToGridPoint(t.getTurtleLocation()),getMyObserver(),"force")){
-			if (tt instanceof cyberfit.relogo.Force)
-			result.add((cyberfit.relogo.Force)tt);
-		}
-		return result;
-	}
-
-	/**
-	 * Returns an agentset of forces on the patches in a collection or on the patches
-	 * that a collection of turtles are.
-	 * 
-	 * @param a
-	 *            a collection
-	 * @return agentset of forces on the patches in collection a or on the patches
-	 *         that collection a turtles are
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
-	public AgentSet<cyberfit.relogo.Force> forcesOn(Collection c){
-
-		if (c == null || c.isEmpty()){
-			return new AgentSet<cyberfit.relogo.Force>();
-		}
-
-		Set<cyberfit.relogo.Force> total = new HashSet<cyberfit.relogo.Force>();
-		if (c.iterator().next() instanceof Turtle){
-			for (Object o : c){
-				if (o instanceof Turtle){
-					Turtle t = (Turtle) o;
-					total.addAll(forcesOn(t));
-				}
-			}
-		}
-		else {
-			for (Object o : c){
-				if (o instanceof Patch){
-					Patch p = (Patch) o;
-					total.addAll(forcesOn(p));
-				}
-			}
-		}
-		return new AgentSet<cyberfit.relogo.Force>(total);
-	}
-
-	/**
-	 * Queries if object is a force.
-	 * 
-	 * @param o
-	 *            an object
-	 * @return true or false based on whether the object is a force
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
-	public boolean isForceQ(Object o){
-		return (o instanceof cyberfit.relogo.Force);
-	}
-
-	/**
-	 * Returns the force with the given who number.
-	 * 
-	 * @param number
-	 *            a number
-	 * @return turtle number
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
-	public cyberfit.relogo.Force force(Number number){
-		Turtle turtle = Utility.turtleU(number.intValue(), getMyObserver());
-		if (turtle instanceof cyberfit.relogo.Force)
-			return (cyberfit.relogo.Force) turtle;
-		return null;
-	}
-
-	/**
-	 * Returns an agentset containing all forces.
-	 * 
-	 * @return agentset of all forces
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Force")
-	public AgentSet<cyberfit.relogo.Force> forces(){
-		AgentSet<cyberfit.relogo.Force> a = new AgentSet<cyberfit.relogo.Force>();
-		for (Object e : this.getMyObserver().getContext().getObjects(cyberfit.relogo.Force.class)) {
-			if (e instanceof cyberfit.relogo.Force){
-				a.add((cyberfit.relogo.Force)e);
-			}
-		}
-		return a;
-	}
-
-	/**
 	 * Returns an agentset of friendlys on a given patch.
 	 * 
 	 * @param p
@@ -847,24 +734,24 @@ public class ReLogoLink<T> extends BaseLink<T>	{
 	}
 
 	/**
-	 * Returns the value of the global variable typeEnvironment.
+	 * Returns the value of the global variable team1Deploy.
 	 *
-	 * @return the value of the global variable typeEnvironment
+	 * @return the value of the global variable team1Deploy
 	 */
-	@ReLogoBuilderGeneratedFor("global: typeEnvironment")
-	public Object getTypeEnvironment(){
-		return repast.simphony.relogo.ReLogoModel.getInstance().getModelParam("typeEnvironment");
+	@ReLogoBuilderGeneratedFor("global: team1Deploy")
+	public Object getTeam1Deploy(){
+		return repast.simphony.relogo.ReLogoModel.getInstance().getModelParam("team1Deploy");
 	}
 
 	/**
-	 * Sets the value of the global variable typeEnvironment.
+	 * Sets the value of the global variable team1Deploy.
 	 *
 	 * @param value
 	 *            a value
 	 */
-	@ReLogoBuilderGeneratedFor("global: typeEnvironment")
-	public void setTypeEnvironment(Object value){
-		repast.simphony.relogo.ReLogoModel.getInstance().setModelParam("typeEnvironment",value);
+	@ReLogoBuilderGeneratedFor("global: team1Deploy")
+	public void setTeam1Deploy(Object value){
+		repast.simphony.relogo.ReLogoModel.getInstance().setModelParam("team1Deploy",value);
 	}
 
 

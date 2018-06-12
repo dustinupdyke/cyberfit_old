@@ -20,20 +20,15 @@ class Attacker extends UserTurtle {
 	def setup(){
 		// this.attacks.add(new Attack {id=1,name="Phishing")
 		//Random.CreateUniform();
-		skill = new Random().nextInt(100) + 1
+		//skill = new Random().nextInt(100) + 1
 	}
 
 	def step() {
-		def x = new Random().nextInt(100) + 1
-		if(x >= skill) {
-			setColor(blue())
-
-			def m = oneOf(machines())
-			createConnectionTo(m)
-			m.update(1)
-		}
-		else {
-			setColor(scaleColor(pink(), new Random().nextInt(255) + 1, 1, 255))
-		}
+		
+		//def m = oneOf(machines())
+		//createConnectionTo(m)
+		//m.update(1)
+		
+		
 	}
 }
