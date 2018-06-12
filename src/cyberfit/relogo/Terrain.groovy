@@ -25,8 +25,6 @@ class Terrain extends UserTurtle {
 	
 	def setup() {
 	
-		System.out.println("Happiness Changed");
-		loadBaseTerrain()
 	
 	}
 
@@ -57,26 +55,5 @@ class Terrain extends UserTurtle {
 			o.add(item.name)
 		}
 		return o
-	}
-	
-	def loadBaseTerrain() { 
-		def i = 0
-		
-		//Load the basic cyber terrain that provides minimal connectivity in an austere location
-		
-		//load type 1: 10 routing systems
-		while(i < 10) {
-			Terrain t1 = new Terrain()
-			t1.setColor(green())
-			t1.availability = 1
-			t1.confidentiality = 1
-			t1.integrity = 1
-			t1.isCompromised = false
-			i++
-		}
-		
-		//load type 2: 20 server systems
-		
-		//load type 3: 40 user systems
 	}
 }

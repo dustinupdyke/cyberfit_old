@@ -17,9 +17,11 @@ class UserObserver extends ReLogoObserver {
 	def setup(){
 		clearAll()
 		
+		print "starttt"
+		
 		global_vulns = new Vulns().Items
 		
-		setDefaultShape(Machine,"box")
+		setDefaultShape(Terrain,"box")
 		setDefaultShape(Attacker,"person")
 		setDefaultShape(Defender,"person")
 		
@@ -71,52 +73,51 @@ class UserObserver extends ReLogoObserver {
 			]
 		}
 
-		if(typeEnvironment == "Tactical") {
-			createMachines(1){ [setxy(0,-200), setColor(white())] }
-		}
-		else if (typeEnvironment == "Industrial") {
-			createMachines(1){ [setxy(0,-200), setColor(yellow())] }
-		}
-		else {
-			createMachines(1){ [setxy(0,-200), setColor(brown())] }
-			createMachines(1){ [setxy(200,-200), setColor(brown())] }
-			createMachines(1){ [setxy(400,-200), setColor(brown())] }
-			createMachines(1){ [setxy(-200,-200), setColor(brown())] }
-			createMachines(1){ [setxy(-400,-200), setColor(brown())] }
+			createTerrains(1){ [setxy(0,-200), setColor(brown())] }
+			createTerrains(1){ [setxy(200,-200), setColor(brown())] }
+			createTerrains(1){ [setxy(400,-200), setColor(brown())] }
+			createTerrains(1){ [setxy(-200,-200), setColor(brown())] }
+			createTerrains(1){ [setxy(-400,-200), setColor(brown())] }
 						
-			createMachines(1){ [setxy(0,0), setColor(brown())] }
-			createMachines(1){ [setxy(200,0), setColor(brown())] }
-			createMachines(1){ [setxy(400,0), setColor(brown())] }
-			createMachines(1){ [setxy(600,0), setColor(brown())] }
-			createMachines(1){ [setxy(-200,0), setColor(brown())] }
-			createMachines(1){ [setxy(-400,0), setColor(brown())] }
-			createMachines(1){ [setxy(-600,0), setColor(brown())] }
-			
-			createMachines(1){ [setxy(0,200), setColor(brown())] }
-			createMachines(1){ [setxy(200,200), setColor(brown())] }
-			createMachines(1){ [setxy(400,200), setColor(brown())] }
-			createMachines(1){ [setxy(-200,200), setColor(brown())] }
-			createMachines(1){ [setxy(-400,200), setColor(brown())] }
-		}
 	}
 		
 	@Go
 	def go(){
 		
-		ask(connections()){
+		ask(interactions()){
 			die()
 		}
-		
+		ask(terrains()){
+			step()
+		}
 		ask(attackers()){
 			step()				
 		}
-		
 		ask(defenders()){
 			step()
 		}
 		
-		ask(machines()){
-			step()
+	}
+
+	def loadBaseTerrain() {
+		def i = 0
+		
+		//Load the basic cyber terrain that provides minimal connectivity in an austere location
+		
+		//load type 1: 10 routing systems
+		while(i < 10) {
+			Terrain t1 = new Terrain()
+			t1.setColor(green())
+			t1.availability = 1
+			t1.confidentiality = 1
+			t1.integrity = 1
+			t1.isCompromised = false
+			i++
 		}
+		
+		//load type 2: 20 server systems
+		
+		//load type 3: 40 user systems
 	}
 }
+
