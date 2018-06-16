@@ -103,7 +103,7 @@ class UserObserver extends ReLogoObserver {
 	@Go
 	def go(){
 		
-		ask(connections()){
+		ask(interactions()){
 			die()
 		}
 		

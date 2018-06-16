@@ -23,7 +23,7 @@ class Defender extends Force {
 			setColor(blue())
 			
 			def m = oneOf(machines())
-			createConnectionTo(m)
+			createInteractionTo(m)
 			m.update(0)
 		}
 		else {

@@ -950,62 +950,6 @@ public class ReLogoObserver extends BaseObserver{
 	}
 
 	/**
-	 * Queries if object is a connection.
-	 * 
-	 * @param o
-	 *            an object
-	 * @return true or false based on whether the object is a connection
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public boolean isConnectionQ(Object o){
-		return (o instanceof cyberfit.relogo.Connection);
-	}
-
-	/**
-	 * Returns an agentset containing all connections.
-	 * 
-	 * @return agentset of all connections
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public AgentSet<cyberfit.relogo.Connection> connections(){
-		AgentSet<cyberfit.relogo.Connection> a = new AgentSet<cyberfit.relogo.Connection>();
-		for (Object e : this.getContext().getObjects(cyberfit.relogo.Connection.class)) {
-			if (e instanceof cyberfit.relogo.Connection){
-				a.add((cyberfit.relogo.Connection)e);
-			}
-		}
-		return a;
-	}
-
-	/**
-	 * Returns the connection between two turtles.
-	 * 
-	 * @param oneEnd
-	 *            an integer
-	 * @param otherEnd
-	 *            an integer
-	 * @return connection between two turtles
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public cyberfit.relogo.Connection connection(Number oneEnd, Number otherEnd) {
-		return (cyberfit.relogo.Connection)(this.getNetwork("Connection").getEdge(turtle(oneEnd),turtle(otherEnd)));
-	}
-
-	/**
-	 * Returns the connection between two turtles.
-	 * 
-	 * @param oneEnd
-	 *            a turtle
-	 * @param otherEnd
-	 *            a turtle
-	 * @return connection between two turtles
-	 */
-	@ReLogoBuilderGeneratedFor("cyberfit.relogo.Connection")
-	public cyberfit.relogo.Connection connection(Turtle oneEnd, Turtle otherEnd) {
-		return connection(oneEnd.getWho(), otherEnd.getWho());
-	}
-
-	/**
 	 * Queries if object is a interaction.
 	 * 
 	 * @param o

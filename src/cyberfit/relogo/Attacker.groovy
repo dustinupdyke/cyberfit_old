@@ -20,10 +20,10 @@ class Attacker extends Force {
 	def step() {
 		def x = new Random().nextInt(100) + 1
 		if(x >= skill) {
-			setColor(blue())
+			setColor(red())
 
 			def m = oneOf(machines())
-			createConnectionTo(m)
+			createInteractionTo(m)
 			m.update(1)
 		}
 		else {
