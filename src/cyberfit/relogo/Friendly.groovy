@@ -15,7 +15,7 @@ class Friendly extends UserTurtle{
 	
 	def type = "log" //mission type of friendly agent assigned
 	def missionId = 0 //mission ID of friendly agent
-	
+	//def 
 	def setup(){
 	
 	}
