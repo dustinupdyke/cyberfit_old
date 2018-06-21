@@ -23,37 +23,7 @@ class Terrain extends UserTurtle {
 	def integrity = 	-1
 	def availability = -1
 	
-	def setup() {
 	
 	
-	}
-
-	def step() {
-		//is there a new vuln this machine should expose?
-		def r = new Random()
-		def x = r.nextInt(100) + 1
-		if(x >= 90) {
-			if(UserObserver.global_vulns != null) {
-				this.vulns.add(UserObserver.global_vulns[r.nextInt(UserObserver.global_vulns.size())])
-			}
-		}
-	}
 	
-	def update(int s){
-		this.status = s
-
-		if(this.status != 0) {
-			this.setColor(orange())
-		} else {
-			this.setColor(brown())
-		}
-	}
-	
-	def getVulns() {
-		def o = []
-		for(item in this.vulns) {
-			o.add(item.name)
-		}
-		return o
-	}
 }
