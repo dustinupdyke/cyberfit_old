@@ -12,12 +12,16 @@ import repast.simphony.relogo.schedule.Go
 import repast.simphony.relogo.schedule.Setup
 
 class Interaction extends ReLogoLink {
-	enum types
-	{
-		FTI(10),
-		FFI(20),
-		TTI(30)
-	}
+	def Type = InteractionTypes.FTI
 	
-	def type = types.FFI
+	def Interaction() {
+		Type = InteractionTypes.FTI
+	}
+}
+
+enum InteractionTypes
+{
+	FTI(10), //force to terrain
+	FFI(20), //force to force
+	TTI(30)  //terrain to terrain
 }

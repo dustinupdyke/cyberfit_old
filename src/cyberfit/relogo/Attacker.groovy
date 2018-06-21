@@ -24,11 +24,25 @@ class Attacker extends UserTurtle {
 	}
 
 	def step() {
+<<<<<<< HEAD
 		
 		//def m = oneOf(machines())
 		//createConnectionTo(m)
 		//m.update(1)
 		
 		
+=======
+		def x = new Random().nextInt(100) + 1
+		if(x >= skill) {
+			setColor(red())
+
+			def m = oneOf(machines())
+			createInteractionTo(m)
+			m.update(1)
+		}
+		else {
+			setColor(scaleColor(pink(), new Random().nextInt(255) + 1, 1, 255))
+		}
+>>>>>>> ed2c27c25eeac24bd88096a9097f65ef6792f425
 	}
 }
