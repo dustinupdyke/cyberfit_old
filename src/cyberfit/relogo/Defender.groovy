@@ -27,9 +27,6 @@ class Defender extends UserTurtle {
 	}
 	
 	def step() {
-<<<<<<< HEAD
-		
-=======
 		def x = new Random().nextInt(100) + 1
 		if(x >= skill) {
 			setColor(blue())
@@ -41,6 +38,6 @@ class Defender extends UserTurtle {
 		else {
 			setColor(scaleColor(green(), new Random().nextInt(255) + 1, 1, 255))
 		}
->>>>>>> ed2c27c25eeac24bd88096a9097f65ef6792f425
+
 	}
 }
